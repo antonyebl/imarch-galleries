@@ -42,7 +42,10 @@ jobs:
                 
                 async function processGallery() {
                   const files = (await fs.promises.readdir(galleryPath))
-                    .filter(file => file.toLowerCase().endsWith(".jpg") || file.toLowerCase().endsWith(".jpeg"))
+                    .filter(file => {
+                      const ext = file.toLowerCase();
+                      return ext.endsWith(".jpg") || ext.endsWith(".jpeg") || ext.endsWith(".png") || ext.endsWith(".gif");
+                    })
                     .sort();
                   
                   const imageData = await Promise.all(files.map(async file => {
