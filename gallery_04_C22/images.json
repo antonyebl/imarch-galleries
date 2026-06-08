@@ -1,5 +1,9 @@
 [
   {
+    "filename": "01_crop_int_eg1.jpg",
+    "avgColor": "#b8b8b8"
+  },
+  {
     "filename": "01_int_eg1.jpg",
     "avgColor": "#f8f8f8"
   },
