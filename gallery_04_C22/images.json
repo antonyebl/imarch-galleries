@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "filename": "H.jpg",
+    "avgColor": "#88a8d8"
+  },
+  {
+    "filename": "Htiles.jpg",
+    "avgColor": "#88a8d8"
+  },
+  {
+    "filename": "HtilesG.jpg",
+    "avgColor": "#88a8d8"
+  },
+  {
+    "filename": "int_eg1.jpg",
+    "avgColor": "#f8f8f8"
+  }
+]
