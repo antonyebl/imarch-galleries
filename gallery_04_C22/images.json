@@ -1,5 +1,9 @@
 [
   {
+    "filename": "01_int_eg1.jpg",
+    "avgColor": "#f8f8f8"
+  },
+  {
     "filename": "H.jpg",
     "avgColor": "#88a8d8"
   },
@@ -10,9 +14,5 @@
   {
     "filename": "HtilesG.jpg",
     "avgColor": "#88a8d8"
-  },
-  {
-    "filename": "int_eg1.jpg",
-    "avgColor": "#f8f8f8"
   }
 ]
