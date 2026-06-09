@@ -1,5 +1,9 @@
 [
   {
+    "filename": "01_a_test_aspect_ratio_4_3.jpg",
+    "avgColor": "#b8b8d8"
+  },
+  {
     "filename": "01_crop_int_eg1.jpg",
     "avgColor": "#b8b8b8"
   },
