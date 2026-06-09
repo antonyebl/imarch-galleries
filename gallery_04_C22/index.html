@@ -5,41 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Architecture Gallery</title>
   <style>
-    /* 1. Minimalist Reset */
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body, html { 
-      width: 100%; 
-      height: 100%; 
+      width: 100vw; 
+      height: 100vh; 
       overflow: hidden; 
-      background-color: #ffffff; /* Crisp white like Arquitectura-G */
+      background-color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: pointer; /* Whole screen indicator that it's clickable */
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
-    /* 2. Aspect Ratio Wrapper (Locks to the first image's shape) */
     .gallery-container {
       position: relative;
-      width: 90vw;   /* Keeps clean margins around the frame */
-      height: 90vh;
-      max-width: 1200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 3;
+      max-width: 100vw;
+      max-height: 100vh;
+      overflow: hidden;
     }
 
-    /* 3. The Images Stacked on Top of Each Other */
     .gallery-slide {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Respects pure landscape/portrait frame ratios */
+      object-fit: contain;
       opacity: 0;
-      transition: opacity 0.4s ease-in-out; /* The minimalist fade effect */
-      pointer-events: none; /* Allows the click to go through to the background container */
+      transition: opacity 0.25s ease-in-out;
+      pointer-events: none;
     }
 
     .gallery-slide.active {
@@ -49,49 +49,38 @@
   </style>
 </head>
 <body>
-
-  <div class="gallery-container" id="gallery">
-    <!-- Images are injected dynamically via your auto-generated images.json -->
-  </div>
-
+  <div class="gallery-container" id="gallery"></div>
   <script>
     async function initGallery() {
       try {
-        // Fetch your auto-generated images.json file
         const response = await fetch('images.json');
         const images = await response.json();
         const container = document.getElementById('gallery');
         
         let currentIndex = 0;
-
         if (images.length === 0) return;
 
-        // Render all the image elements seamlessly
         images.forEach((img, index) => {
           const el = document.createElement('img');
           el.src = img.filename;
           el.className = `gallery-slide ${index === 0 ? 'active' : ''}`;
-          el.alt = "Architecture Portfolio View";
+          el.alt = "Architecture View";
           container.appendChild(el);
         });
 
         const slides = document.querySelectorAll('.gallery-slide');
 
-        // Simple function to transition onto the next image
         function nextSlide() {
           slides[currentIndex].classList.remove('active');
           currentIndex = (currentIndex + 1) % slides.length;
           slides[currentIndex].classList.add('active');
         }
 
-        // Clicking anywhere on the screen fires the fade transition
         document.body.addEventListener('click', nextSlide);
-
       } catch (err) {
-        console.error("Error setting up architectural gallery slider:", err);
+        console.error("Error setting up gallery:", err);
       }
     }
-
     initGallery();
   </script>
 </body>
