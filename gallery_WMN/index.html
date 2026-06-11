@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture Gallery</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body, html { 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden; 
+      background-color: #ffffff;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .gallery-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+      pointer-events: none;
+    }
+
+    .gallery-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery-container" id="gallery"></div>
+  <script>
+    async function initGallery() {
+      try {
+        const response = await fetch('images.json');
+        const images = await response.json();
+        const container = document.getElementById('gallery');
+        
+        let currentIndex = 0;
+        if (images.length === 0) return;
+
+        images.forEach((img, index) => {
+          const el = document.createElement('img');
+          el.src = img.filename;
+          el.className = `gallery-slide ${index === 0 ? 'active' : ''}`;
+          el.alt = "Architecture View";
+          container.appendChild(el);
+        });
+
+        const slides = document.querySelectorAll('.gallery-slide');
+
+        function nextSlide() {
+          slides[currentIndex].classList.remove('active');
+          currentIndex = (currentIndex + 1) % slides.length;
+          slides[currentIndex].classList.add('active');
+        }
+
+        document.body.addEventListener('click', nextSlide);
+      } catch (err) {
+        console.error("Error setting up gallery:", err);
+      }
+    }
+    initGallery();
+  </script>
+</body>
+</html>
