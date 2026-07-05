@@ -1,5 +1,53 @@
 [
   {
+    "filename": "CF_01.jpg",
+    "avgColor": "#282818"
+  },
+  {
+    "filename": "CF_02.jpg",
+    "avgColor": "#58a8d8"
+  },
+  {
+    "filename": "CF_03.jpg",
+    "avgColor": "#382818"
+  },
+  {
+    "filename": "CF_d_section+.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "CF_diag_summer.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "CF_diag_winter.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "CF_plan_00.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "CF_plan_01.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "CF_plan_02.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "CF_plan_03.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "CF_sectioncontext.jpg",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "CF_structure.jpg",
+    "avgColor": "#f8f8f8"
+  },
+  {
     "filename": "CF_text.png",
     "avgColor": "#f8f8f8"
   }
