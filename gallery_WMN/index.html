@@ -12,9 +12,26 @@
       height: 100%; 
       overflow: hidden; 
       background-color: #ffffff;
-      cursor: pointer;
       -webkit-user-select: none;
       user-select: none;
+    }
+
+    .nav-zone {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    .nav-zone.left {
+      left: 0;
+      cursor: w-resize;
+    }
+
+    .nav-zone.right {
+      right: 0;
+      cursor: e-resize;
     }
 
     .gallery-container {
@@ -44,6 +61,8 @@
 </head>
 <body>
   <div class="gallery-container" id="gallery"></div>
+  <div class="nav-zone left"></div>
+  <div class="nav-zone right"></div>
   <script>
     async function initGallery() {
       try {
@@ -64,13 +83,28 @@
 
         const slides = document.querySelectorAll('.gallery-slide');
 
-        function nextSlide() {
+        function showSlide(newIndex) {
           slides[currentIndex].classList.remove('active');
-          currentIndex = (currentIndex + 1) % slides.length;
+          currentIndex = (newIndex + slides.length) % slides.length;
           slides[currentIndex].classList.add('active');
         }
 
-        document.body.addEventListener('click', nextSlide);
+        function nextSlide() { showSlide(currentIndex + 1); }
+        function prevSlide() { showSlide(currentIndex - 1); }
+
+        document.body.addEventListener('click', (e) => {
+          const isLeftHalf = e.clientX < window.innerWidth / 2;
+          if (isLeftHalf) {
+            prevSlide();
+          } else {
+            nextSlide();
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') prevSlide();
+          if (e.key === 'ArrowRight') nextSlide();
+        });
       } catch (err) {
         console.error("Error setting up gallery:", err);
       }
