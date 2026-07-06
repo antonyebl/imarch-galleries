@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "filename": "WMN_01.jpg",
+    "avgColor": "#e8e8e8"
+  },
+  {
+    "filename": "WMN_plan_00.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "WMN_plan_01.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "WMN_plan_02.png",
+    "avgColor": "#f8f8f8"
+  },
+  {
+    "filename": "WMN_plan_03.png",
+    "avgColor": "#f8f8f8"
+  }
+]
